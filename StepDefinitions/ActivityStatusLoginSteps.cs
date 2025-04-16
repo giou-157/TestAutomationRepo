@@ -41,11 +41,11 @@ public class ActivityStatusLoginSteps
 
         if (status == "true")
         {
-            await _loginPage.TurnStatusToActive("ff48e2ad-24c7-4e55-a10b-f34a98f0bec1");
+            await _loginPage.TurnStatusToActive(TestInputs.Id1);
         }
         else
         {
-            await _loginPage.TurnStatusToInactive("ff48e2ad-24c7-4e55-a10b-f34a98f0bec1");
+            await _loginPage.TurnStatusToInactive(TestInputs.Id1);
         }
     }
 
@@ -68,7 +68,7 @@ public class ActivityStatusLoginSteps
     public void WhenTheUserClicksLoginButton()
     {
         _loginPage.ClickLoginButton();
-        _loginPage.TurnStatusToActive("ff48e2ad-24c7-4e55-a10b-f34a98f0bec1").Wait(); // Turn status back to active to avoid disruption.
+        _loginPage.TurnStatusToActive(TestInputs.Id1).Wait(); // Turn status back to active to avoid disruption.
     }
 
     /// <summary>

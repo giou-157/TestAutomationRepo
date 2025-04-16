@@ -17,6 +17,8 @@ public class PersonaToRoleSteps
     private readonly LoginPage _loginPage;
     private readonly HomePage _homePage;
     private bool _isActiveUser;
+    private string _userId;
+    private Guid _personaId;
 
     /// <summary>
     /// Initialise instance of the test.
@@ -26,6 +28,9 @@ public class PersonaToRoleSteps
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
         optionsBuilder.UseSqlServer(TestInputs.ConnectionString);
         var options = optionsBuilder.Options;
+
+        _userId = TestInputs.Id1;
+        _personaId = new Guid(TestInputs.AutomatedTestPersona_Id);
 
         _loginPage = new LoginPage(Hooks.Driver, options);
         _homePage = new HomePage(Hooks.Driver, options);
@@ -39,7 +44,7 @@ public class PersonaToRoleSteps
     {
         _loginPage.EnsureLoginPageTitleIsClickable();
         _loginPage.LoginTextValidation();
-         await _loginPage.DeleteAllRolesAndPersona("ff48e2ad-24c7-4e55-a10b-f34a98f0bec1");
+         await _loginPage.DeleteAllRolesAndPersona(_userId);
     }
 
     /// <summary>
@@ -49,19 +54,19 @@ public class PersonaToRoleSteps
     [Given(@"the user has at least one role or persona associated to it")]
     public async Task GivenTheUserHasPermissions()
     {
-        await _loginPage.DeleteAllRolesAndPersona("ff48e2ad-24c7-4e55-a10b-f34a98f0bec1");
-        await _loginPage.EmptyPersonaFromRoles(new Guid("844DBDA2-853A-4BDF-871D-3C9420B5BF27"));
+        await _loginPage.DeleteAllRolesAndPersona(_userId);
+        await _loginPage.EmptyPersonaFromRoles(_personaId);
 
         _loginPage.EnsureLoginPageTitleIsClickable();
         _loginPage.LoginTextValidation();
-        string[] roleIds = { "68497b59-7feb-4d83-a060-4d6c41f35acf" };
-        await _loginPage.AssignRoleToUser(roleIds, "ff48e2ad-24c7-4e55-a10b-f34a98f0bec1");
+        string[] roleIds = { TestInputs.CWSABasicUser_Id };
+        await _loginPage.AssignRoleToUser(roleIds, _userId);
 
-        string[] rolesIds = { "0721b648-82b6-4968-8203-923dcd93fae6", "57b8c658-3c85-4d04-baf9-bee41fd20466" };
-        var personaId = new Guid("844DBDA2-853A-4BDF-871D-3C9420B5BF27");
-        await _loginPage.AssignRolesToPersona(rolesIds, personaId);
+        string[] rolesIds = { TestInputs.PatientSearchBasicUser_Id, TestInputs.WardListBasicUser_Id };
+       
+        await _loginPage.AssignRolesToPersona(rolesIds, _personaId);
 
-        await _loginPage.AssignPersonaToUser(personaId, "ff48e2ad-24c7-4e55-a10b-f34a98f0bec1");
+        await _loginPage.AssignPersonaToUser(_personaId, _userId);
     }
 
 
@@ -84,7 +89,7 @@ public class PersonaToRoleSteps
     public void WhenTheUserClicksTheLoginButton()
     {
         _loginPage.ClickLoginButton();
-        _loginPage.TurnStatusToActive("ff48e2ad-24c7-4e55-a10b-f34a98f0bec1").Wait(); // Turn status back to active to avoid disruption.
+        _loginPage.TurnStatusToActive(_userId).Wait(); // Turn status back to active to avoid disruption.
     }
 
     /// <summary>
