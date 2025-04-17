@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <UpToDateCheckInput Remove="Features\CWS2ETR.feature" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ExtentReports" Version="4.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.36" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.36" />
@@ -25,6 +29,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
     <PackageReference Include="NUnit.Allure" Version="1.2.1.1" />
     <PackageReference Include="Selenium.WebDriver" Version="4.25.0" />
+    <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
     <PackageReference Include="SpecFlow" Version="3.9.74" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
     <PackageReference Include="SpecFlow.NUnit" Version="3.9.74" />

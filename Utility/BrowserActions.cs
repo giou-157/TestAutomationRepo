@@ -3,6 +3,7 @@ using NUnit.Framework;
 using NUnit.Framework.Constraints;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 using static System.Net.Mime.MediaTypeNames;
 using System.Text.RegularExpressions;
@@ -57,6 +58,16 @@ namespace CWS2POC.Utility
         public static bool IsStringPresentInPageSource(IWebDriver driver, string searchString)
         {
             return driver.PageSource.Contains(searchString);
+        }
+
+        /// <summary>
+        /// Gets title of the page the user is on.
+        /// </summary>
+        /// <returns>Page title.</returns>
+        public static string GetPageTitle(IWebDriver driver)
+        {
+            string title = driver.Title;
+            return title;
         }
 
         /// <summary>
@@ -124,6 +135,51 @@ namespace CWS2POC.Utility
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Checks given element is visible.
+        /// </summary>
+        /// <param name="driver">Driver.</param>
+        /// <param name="locator">Element locator.</param>
+        /// <returns>Bolean.</returns>
+        public static bool IsElementVisible(IWebDriver driver, string locator)
+        {
+            IWebElement element = driver.FindElement(By.XPath(locator));
+            bool isVisible = element.Displayed;
+            return isVisible;
+        }
+
+        /// <summary>
+        /// Waits for given element to be visible
+        /// </summary>
+        /// <param name="driver">Driver.</param>
+        /// <param name="locator">Element locator.</param>
+        public static void Wait(IWebDriver driver, string locator)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator)));
+        }
+
+        /// <summary>
+        /// Waits for given element to be invisible
+        /// </summary>
+        /// <param name="driver">Driver.</param>
+        /// <param name="locator">Element locator.</param>
+        public static void WaitDisappearence(IWebDriver driver, string locator)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(locator)));
+        }
+
+        /// <summary>
+        /// Takes user to a specific location on CWS2 via url
+        /// </summary>
+        /// <param name="driver">Driver.</param>
+        /// <param name="url">url.</param>
+        public static void NavigateTo(IWebDriver driver, string url)
+        {
+            driver.Navigate().GoToUrl(url);
         }
     }
 

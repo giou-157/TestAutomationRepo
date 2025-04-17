@@ -79,23 +79,23 @@ namespace CWS2POC.Features
 #line 4
   #line hidden
 #line 5
-    testRunner.Given("the user is on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("the user is on the Authorisation Server login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
-    testRunner.When("the user enters valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("the user enters some valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
-    testRunner.And("the user clicks on the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("the user proceeds to click login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 8
-    testRunner.And("the user clicks on patient search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("the user clicks on patient search button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Search by CRN/NHS number")]
         [NUnit.Framework.CategoryAttribute("TesterTalk")]
-        [NUnit.Framework.TestCaseAttribute("999326", "Blood Bank", null)]
+        [NUnit.Framework.TestCaseAttribute("999305", "Blood Bank", null)]
         [NUnit.Framework.TestCaseAttribute("938 291 0301", "Blood Bank", null)]
         public void SearchByCRNNHSNumber(string key, string miniApp, string[] exampleTags)
         {
@@ -136,7 +136,7 @@ namespace CWS2POC.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Search by Name")]
         [NUnit.Framework.CategoryAttribute("TesterTalk")]
-        [NUnit.Framework.TestCaseAttribute("SOFTWARE 26", "TEST CAREFLOW", "Male", "Blood Bank", null)]
+        [NUnit.Framework.TestCaseAttribute("SOFTWARE 5", "TEST CWS", "Male", "Blood Bank", null)]
         public void SearchByName(string forename, string surname, string gender, string miniApp, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -166,25 +166,58 @@ namespace CWS2POC.Features
   this.FeatureBackground();
 #line hidden
 #line 23
-    testRunner.Given("the user is on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.When(string.Format("the user click in Name and then enters {0} and {1}", forename, surname), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 24
-    testRunner.When("the user enters valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 25
-    testRunner.And("the user clicks on the login button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 26
-    testRunner.And("the user clicks on patient search", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 27
-    testRunner.And(string.Format("the user click in Name and then enters {0} and {1}", forename, surname), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 28
     testRunner.And(string.Format("the user choose {0} radio button and clicks on {1}", gender, miniApp), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 29
+#line 25
     testRunner.Then(string.Format("the Associated {0} and {1} is visible in {2} Homepage", forename, surname, miniApp), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Search by DOB")]
+        [NUnit.Framework.CategoryAttribute("TesterTalk")]
+        [NUnit.Framework.TestCaseAttribute("SOFTWARE 5", "TEST CWS", "Male", "Blood Bank", null)]
+        public void SearchByDOB(string forename, string surname, string gender, string miniApp, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "TesterTalk"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Forename", forename);
+            argumentsOfScenario.Add("Surname", surname);
+            argumentsOfScenario.Add("Gender", gender);
+            argumentsOfScenario.Add("MiniApp", miniApp);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search by DOB", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 33
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 4
+  this.FeatureBackground();
+#line hidden
+#line 34
+    testRunner.When(string.Format("the user click in DOB and enters {0} and {1}", forename, surname), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 35
+    testRunner.And(string.Format("the user clicks on {0}", miniApp), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 36
+    testRunner.Then(string.Format("the Associated patients are visible in {0} Homepage", miniApp), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

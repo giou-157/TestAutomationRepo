@@ -4,7 +4,7 @@ using CWS2POC.Utility;
 using CWS2POC.Hooks;
 using AventStack.ExtentReports.Gherkin.Model;
 using SharpCompress.Common;
-
+/*
 /// <summary>
 /// Dashboard test steps class.
 /// </summary>
@@ -144,3 +144,4 @@ public class DashboardSteps
         _dashboardPage.ValidateHeader();
     }
 }
+*/

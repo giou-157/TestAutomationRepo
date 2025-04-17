@@ -35,6 +35,7 @@ namespace CWS2POC.Utility
 
 
         // Roles and Personas Ids:
+        public static string ETR_url = "https://7a601devcwsiis1.cymru.nhs.uk/ABUHB.CWS.ETR/?crn=999305"; // While navigation to ETR is not ready.
         public const string AutomatedTestPersona_Id = "844DBDA2-853A-4BDF-871D-3C9420B5BF27";
         public const string CWSABasicUser_Id = "68497b59-7feb-4d83-a060-4d6c41f35acf";
         public const string PatientSearchBasicUser_Id = "0721b648-82b6-4968-8203-923dcd93fae6";

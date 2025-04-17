@@ -103,5 +103,10 @@ namespace CWS2POC.Utility
         // Wardlist Page Locators
         /// <summary>XPath for the admitted date label on the Wardlist page.</summary>
         public static string Admitted_Date_Label = "//*[@id='AdmissionDetailsContent 999315']/div[1]/table/tbody/tr[2]/td/label";
+
+        // Electronic Test Request page locators
+        public static string RequestTestBtt = "//button[@id='btnRequestTest']";
+        public static string ExitWCPBtt = "//button[@id='btnExitWcp']";
+        public static string ETRHiddenDiv = "//div[@id='hdnDiv']";
     }
 }
