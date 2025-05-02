@@ -34,6 +34,7 @@ public class PersonaToRoleSteps
 
         _loginPage = new LoginPage(Hooks.Driver, options);
         _homePage = new HomePage(Hooks.Driver, options);
+
     }
 
     /// <summary>

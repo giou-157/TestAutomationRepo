@@ -233,18 +233,15 @@ namespace CWS2POC.Pages
 
             using (var context = new ApplicationDbContext(_options))
             {
-                foreach (var role in roleIds)
+                var newMappings = roleIds.Select(roleId => new IdentityUserRole<string>
                 {
-                    var newMappings = roleIds.Select(roleId => new IdentityUserRole<string>
-                    {
-                        RoleId = roleId,
-                        UserId = userId
-                    });
+                    RoleId = roleId,
+                    UserId = userId
+                }).ToList();
 
-                    context.Set<IdentityUserRole<string>>().AddRange(newMappings);
+                context.Set<IdentityUserRole<string>>().AddRange(newMappings);
 
-                    await context.SaveChangesAsync();
-                }
+                await context.SaveChangesAsync();
             }
         }
 

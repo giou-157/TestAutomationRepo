@@ -162,6 +162,55 @@ namespace CWS2POC.Utility
         }
 
         /// <summary>
+        /// Waits for title to change to given title.
+        /// </summary>
+        /// <param name="driver">Driver.</param>
+        /// <param name="expectedTitle">Expected Title.</param>
+        /// <param name="timeout">Timeout.</param>
+        public static void WaitForTitle(IWebDriver driver, string expectedTitle, TimeSpan timeout)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+            wait.Until(d =>
+            {
+                try
+                {
+                    return d.Title.Equals(expectedTitle, StringComparison.OrdinalIgnoreCase);
+                }
+                catch (StaleElementReferenceException)
+                {
+                    return false;
+                }
+            });
+        }
+
+        /// <summary>
+        /// Waits for html to change.
+        /// </summary>
+        /// <param name="driver">Driver.</param>
+        /// <param name="originalHtml">Initial html.</param>
+        /// <param name="timeout">Max time.</param>
+        public static void WaitUntilHtmlChanges(IWebDriver driver, string originalHtml, TimeSpan timeout)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+            wait.Until(d =>
+            {
+                string currentHtml = d.FindElement(By.TagName("body")).GetAttribute("innerHTML");
+                return !currentHtml.Equals(originalHtml);
+            });
+        }
+
+        /// <summary>
+        /// Gets page HTML.
+        /// </summary>
+        /// <param name="driver">driver.</param>
+        /// <returns>Retuns HTML in string form.</returns>
+        public static string GetPageHtml(IWebDriver driver)
+        {
+            return driver.FindElement(By.TagName("body")).GetAttribute("innerHTML");
+        }
+
+        /// <summary>
         /// Waits for given element to be invisible
         /// </summary>
         /// <param name="driver">Driver.</param>

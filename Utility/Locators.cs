@@ -39,6 +39,8 @@ namespace CWS2POC.Utility
         public static string BloodBank_BTN = "//*[@id='Blood Bank']";
         /// <summary>XPath for the ATD button.</summary>
         public static string ATD_BTN = "//*[@id='ATD']";
+        /// <summary>XPath for the ETR button.</summary>
+        public static string ETR = "//*[@id='ETR']";
         /// <summary>XPath for the Patient Demographics button.</summary>
         public static string PatientDemo_BTN = "//*[@id='Patient Demographics']";
         /// <summary>XPath for the Documents button.</summary>
@@ -106,7 +108,7 @@ namespace CWS2POC.Utility
 
         // Electronic Test Request page locators
         public static string RequestTestBtt = "//button[@id='btnRequestTest']";
-        public static string ExitWCPBtt = "//button[@id='btnExitWcp']";
+        public static string ExitWCPBtt = "//button[@id='btnBackToCws']";
         public static string ETRHiddenDiv = "//div[@id='hdnDiv']";
     }
 }

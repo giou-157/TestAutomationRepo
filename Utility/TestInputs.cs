@@ -40,5 +40,9 @@ namespace CWS2POC.Utility
         public const string CWSABasicUser_Id = "68497b59-7feb-4d83-a060-4d6c41f35acf";
         public const string PatientSearchBasicUser_Id = "0721b648-82b6-4968-8203-923dcd93fae6";
         public const string WardListBasicUser_Id = "57b8c658-3c85-4d04-baf9-bee41fd20466";
+        public const string ETR_RequestTest_Id = "08e48709-6998-49ab-ade1-850935c8bd2c";
+
+        // Test CRNs
+        public const string crn1 = "999305";
     }
 }

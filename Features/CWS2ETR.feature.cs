@@ -75,14 +75,14 @@ namespace CWS2POC.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User can access ETR from Electronic Test Request screen")]
+        [NUnit.Framework.DescriptionAttribute("User with rol_ETR_RequestTests role can access ETR screen")]
         [NUnit.Framework.CategoryAttribute("TesterTalk")]
-        public void UserCanAccessETRFromElectronicTestRequestScreen()
+        public void UserWithRol_ETR_RequestTestsRoleCanAccessETRScreen()
         {
             string[] tagsOfScenario = new string[] {
                     "TesterTalk"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can access ETR from Electronic Test Request screen", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User with rol_ETR_RequestTests role can access ETR screen", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -94,13 +94,113 @@ namespace CWS2POC.Features
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("the user is on the Electronic Test Request screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("an user with rol_ETR_RequestTests role can log in with valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.When("user clicks \'Request Test\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("the user navigates to ETR screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.Then("\'Request Test\' button is hidden, \'Exit WCP\' button appears with ETR hidden div", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("the user can access the screen successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User with NO rol_ETR_RequestTests role can NOT access ETR screen")]
+        [NUnit.Framework.CategoryAttribute("TesterTalk")]
+        public void UserWithNORol_ETR_RequestTestsRoleCanNOTAccessETRScreen()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "TesterTalk"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User with NO rol_ETR_RequestTests role can NOT access ETR screen", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 12
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 13
+    testRunner.Given("an user without rol_ETR_RequestTests role can log in with valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 14
+    testRunner.When("the user navigates to ETR screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 15
+    testRunner.Then("the user is displayed Denied Access screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User can navigate to ETR screen via Patient Search")]
+        [NUnit.Framework.CategoryAttribute("TesterTalk")]
+        public void UserCanNavigateToETRScreenViaPatientSearch()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "TesterTalk"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can navigate to ETR screen via Patient Search", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 18
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 19
+    testRunner.Given("an user with relevant roles can log in with valid credentials", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 20
+    testRunner.When("the user clicks \'Patient Search\' on the side bar", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 21
+    testRunner.And("the user inputs a valid crn and clicks \'ETR\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+    testRunner.Then("the user is redireted to the ETR screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("User can access ETR from Electronic Test Request screen")]
+        [NUnit.Framework.CategoryAttribute("TesterTalk")]
+        public void UserCanAccessETRFromElectronicTestRequestScreen()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "TesterTalk"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can access ETR from Electronic Test Request screen", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 25
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 26
+    testRunner.Given("the user is on the Electronic Test Request screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 27
+    testRunner.When("user clicks \'Request Test\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 28
+    testRunner.Then("\'Request Test\' button is hidden, \'Back to CWS\' button appears with ETR hidden div" +
+                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -115,7 +215,7 @@ namespace CWS2POC.Features
                     "TesterTalk"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can exit ETR from Electronic Test Request screen", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 32
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -125,14 +225,14 @@ namespace CWS2POC.Features
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 33
     testRunner.Given("the user is on the Electronic Test Request screen with active ETR", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
-    testRunner.When("user clicks \'Exit WCP\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+    testRunner.When("user clicks \'Back to CWS\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
-    testRunner.Then("\'Request Test\' button appears, \'Exit WCP\' button and ETR div is hidden", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 35
+    testRunner.Then("user is redirected to CWS pathology", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
